@@ -10,7 +10,7 @@ struct Node{
 struct Executor{
     char* command;
     char** options;
-}typedef struct Executor* executor;
+}; typedef struct Executor* executor;
 
 node init_ll(void);
 node create_node(char* info);
