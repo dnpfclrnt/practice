@@ -4,7 +4,8 @@
 #include <string.h>
 
 
-node init_ll(void){
+node init_ll(void)
+{
   node head = (node)calloc(1, sizeof(struct Node));
   node tail = (node)calloc(1, sizeof(struct Node));
 
@@ -18,14 +19,16 @@ node init_ll(void){
 }
 
 
-node create_node(char* info){
+node create_node(char* info)
+{
   node new_node = (node)calloc(1, sizeof(struct Node));
   new_node->info = info;
   return new_node;
 }
 
 
-void add_node_at_first(node head, char* info){
+void add_node_at_first(node head, char* info)
+{
   node new_node = create_node(info);
   node head_next = head->next;
 
@@ -37,7 +40,8 @@ void add_node_at_first(node head, char* info){
 }
 
 
-void add_node_at_last(node head, char* info){
+void add_node_at_last(node head, char* info)
+{
   node new_node = create_node(info);
   node tail = head->prev;
   node tail_prev = tail->prev;
@@ -50,11 +54,13 @@ void add_node_at_last(node head, char* info){
 }
 
 
-void destroy_ll(node head){
+void destroy_ll(node head)
+{
   node tail = head->prev;
   node destroyer = head;
   node next;
-  while (destroyer != tail){
+  while (destroyer != tail)
+  {
     next = destroyer->next;
     free(destroyer->info);
     free(destroyer);
@@ -65,23 +71,36 @@ void destroy_ll(node head){
 }
 
 
-void print_ll(node head){
+void print_ll(node head)
+{
   node tail = head->prev;
   node printer = head->next;
-  while (printer != tail){
+  while (printer != tail)
+  {
     printf("Information: %s\n", printer->info);
     printer = printer->next;
   }
 }
 
 
-int main(int argc, char* argv[]){
-  if (argc < 2){
-    fprintf(stderr, "Format: ./linked_list info1 info2 ...");
+int main(int argc, char* argv[])
+{
+  if (argc < 2)
+  {
+    fprintf(stderr, "Format: ./linked_list info1 info2 ...\n");
     return 1;
   }
-  else{
-    printf("Number of argument = %d", argc);
+  else
+  {
+    node head = init_ll();
+    for (int i = 1; i < argc; i++)
+    {
+      char* info = (char*)calloc(strlen(argv[i], sizeof(char)));
+      sprintf(info, argv[i]);
+      add_node_at_last(head, info);
+    }
+    print_ll(head);
+    destroy_ll(head);
   }
   return 0;
 }
