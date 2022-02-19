@@ -95,7 +95,7 @@ int main(int argc, char* argv[])
     node head = init_ll();
     for (int i = 1; i < argc; i++)
     {
-      char* info = (char*)calloc(strlen(argv[i], sizeof(char)));
+      char* info = (char*)calloc(strlen(argv[i]), sizeof(char));
       sprintf(info, argv[i]);
       add_node_at_last(head, info);
     }
