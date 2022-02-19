@@ -122,6 +122,7 @@ int main(int argc, char* argv[])
       add_node_at_last(head, info);
     }
     print_ll(head);
+    execute(head, argc);
     destroy_ll(head);
   }
   return 0;
