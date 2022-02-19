@@ -1,5 +1,4 @@
-all: 
-	obj link
+all: obj link
 
 obj:
 	g++ -c linked_list.cpp
