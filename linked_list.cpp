@@ -103,6 +103,15 @@ void execute(node head, int argc)
     sweep = sweep->next;
   }
   execvp(EXE->command, EXE->options);
+  
+
+  // Free memory
+  for (int j = 0; j < i; j++){
+    free(EXE->options[j]);
+  }
+  free(EXE->options);
+  free(EXE->command);
+  free(EXE);
 }
 
 
