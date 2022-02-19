@@ -98,6 +98,7 @@ void execute(node head, int argc)
       sprintf(EXE->command, sweep->info);
     }
     EXE->options[i] = (char*)calloc(strlen(sweep->info), sizeof(char));
+    sprintf(EXE->options[i], sweep->info);
     i++;
     sweep = sweep->next;
   }
