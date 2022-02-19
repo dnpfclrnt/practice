@@ -61,7 +61,7 @@ void destroy_ll(node head){
     destroyer = next;
   }
   free(tail->info);
-  free(tail)
+  free(tail);
 }
 
 
@@ -77,11 +77,11 @@ void print_ll(node head){
 
 int main(int argc, char* argv[]){
   if (argc < 2){
-    sprintf(stderr, "Format: ./linked_list info1 info2 ...");
+    fprintf(stderr, "Format: ./linked_list info1 info2 ...");
     return 1;
   }
   else{
-    print("Number of argument = %d", argc);
+    printf("Number of argument = %d", argc);
   }
   return 0;
 }
