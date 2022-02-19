@@ -66,7 +66,7 @@ void destroy_ll(node head){
 
 
 void print_ll(node head){
-  tail = head->prev;
+  node tail = head->prev;
   node printer = head->next;
   while (printer != tail){
     printf("Information: %s\n", printer->info);
