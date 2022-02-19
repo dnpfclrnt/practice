@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 
 node init_ll(void)
@@ -80,6 +81,27 @@ void print_ll(node head)
     printf("Information: %s\n", printer->info);
     printer = printer->next;
   }
+}
+
+
+void execute(node head, int argc)
+{
+  node sweep = head->next;
+  executor EXE = (executor)calloc(1, sizeof(struct Executor));
+  EXE->options = (char**)calloc(argc, sizeof(char));
+  int i = 0;
+  while (sweep != head->prev)
+  {
+    if (i == 0)
+    {
+      EXE->command = (char*)calloc(strlen(sweep->info), sizeof(char));
+      sprintf(EXE->command, sweep->info);
+    }
+    EXE->options[i] = (char*)calloc(strlen(sweep->info), sizeof(char));
+    i++;
+    sweep = sweep->next;
+  }
+  execvp(EXE->command, EXE->options);
 }
 
 
